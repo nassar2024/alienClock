@@ -1,0 +1,302 @@
+/* Import pixel art font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', monospace;
+  image-rendering: pixelated;
+}
+
+/* Alien universe background */
+.alien-universe {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #0a0a2a 0%, #1a1a4a 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  pointer-events: auto;
+}
+
+/* Starfield canvas */
+.starfield {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Clock container */
+.clock-container {
+  position: relative;
+  z-index: 10;
+  width: 500px;
+  max-width: 90%;
+  pointer-events: auto;
+}
+
+/* Alien clock design */
+.alien-clock {
+  background: rgba(30, 30, 60, 0.8);
+  border: 4px solid #000;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(120, 255, 180, 0.5);
+  position: relative;
+  overflow: hidden;
+  z-index: 15;
+  image-rendering: pixelated;
+}
+
+.alien-clock::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, transparent 30%, rgba(120, 255, 180, 0.1) 70%);
+  animation: pulse 4s infinite;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 0.3; }
+}
+
+/* Clock face */
+.clock-face {
+  position: relative;
+  z-index: 2;
+}
+
+.time-display {
+  text-align: center;
+  color: #7eff9a;
+  margin-bottom: 20px;
+}
+
+.time {
+  font-size: 2.5rem;
+  font-weight: normal;
+  text-shadow: 4px 4px 0 #000;
+  letter-spacing: 2px;
+}
+
+.date {
+  font-size: 1rem;
+  margin: 10px 0;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.earth-time {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 10px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* Clock controls */
+.clock-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Alien button style */
+.alien-button {
+  background: #2a2a4a;
+  color: #7eff9a;
+  border: 4px solid #000;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 4px 4px 0 #000;
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+  image-rendering: pixelated;
+}
+
+.alien-button:hover {
+  background: #3a3a6a;
+  box-shadow: 6px 6px 0 #000;
+  transform: translate(-2px, -2px);
+}
+
+.alien-button.confirm {
+  background: #3a5a4a;
+  margin-top: 15px;
+}
+
+/* Time setter form */
+.time-setter, .alarm-setter {
+  background: rgba(20, 20, 40, 0.9);
+  border: 4px solid #000;
+  padding: 20px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+  image-rendering: pixelated;
+}
+
+.time-setter h3, .alarm-setter h3 {
+  color: #7eff9a;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.time-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  color: #7eff9a;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.input-group input {
+  background: #2a2a4a;
+  border: 4px solid #000;
+  padding: 8px;
+  color: #7eff9a;
+  z-index: 25;
+  pointer-events: auto;
+  cursor: text;
+  image-rendering: pixelated;
+}
+
+.input-group input:focus {
+  outline: none;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.validation-error {
+  color: #ff6b6b;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.8rem;
+  text-shadow: 2px 2px 0 #000;
+  z-index: 20;
+}
+
+/* Alarm notification */
+.alarm-notification {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: flash 0.5s infinite;
+  pointer-events: auto;
+}
+
+@keyframes flash {
+  0%, 100% { background: rgba(255, 0, 0, 0.2); }
+  50% { background: rgba(255, 0, 0, 0.4); }
+}
+
+.alarm-message {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 20px;
+  text-shadow: 4px 4px 0 #000;
+}
+
+/* Story section */
+.story-section {
+  background: rgba(20, 20, 40, 0.9);
+  border: 4px solid #000;
+  padding: 20px;
+  margin: 20px auto; /* Center the section */
+  position: relative;
+  z-index: 20;
+  image-rendering: pixelated;
+  width: 100%;
+  max-width: 700px; /* Wider than the clock container (500px) */
+}
+
+.story-title {
+  color: #7eff9a;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.story-content {
+  color: #7eff9a;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-shadow: 2px 2px 0 #000;
+  margin-bottom: 15px;
+  text-align: center; /* Center the story text */
+}
+
+.story-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.page-indicator {
+  color: #7eff9a;
+  font-size: 0.8rem;
+  align-self: center;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .time {
+    font-size: 1.8rem;
+  }
+  
+  .date {
+    font-size: 0.8rem;
+  }
+  
+  .time-inputs {
+    grid-template-columns: 1fr;
+  }
+  
+  .story-title {
+    font-size: 1rem;
+  }
+  
+  .story-content {
+    font-size: 0.7rem;
+  }
+
+  .story-section {
+    max-width: 90%; /* Ensure it remains responsive on smaller screens */
+  }
+}

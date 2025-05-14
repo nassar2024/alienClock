@@ -1,0 +1,37 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+    font-family: 'Orbitron';
+    src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.text-neon-green {
+    color: #00ff99;
+}
+
+.border-neon-green {
+    border-color: #00ff99;
+}
+
+.shadow-neon {
+    box-shadow: 0 0 20px rgba(0, 255, 153, 0.7);
+}
+
+.glow {
+    text-shadow: 0 0 15px #00ff99, 0 0 30px #00ff99;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
